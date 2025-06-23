@@ -1,0 +1,40 @@
+
+<mat-card class="action-buttons">
+
+    <div>
+        <button mat-button (click)="createDoorGroup()" >
+            <mat-icon style="color: grey;">add_circle</mat-icon>
+            Group
+        </button>
+        <button mat-button  [matMenuTriggerFor]="menu">
+            Doors
+            <mat-icon style="color: grey;">room_preferences</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item  (click)="openListDoorsPopup()">
+              <span>Manage</span>
+              <mat-icon >room_preferences</mat-icon>
+            </button>
+            <button mat-menu-item (click)="createDorDIalog()">
+                <span>Create</span>
+              <mat-icon>sensor_door</mat-icon>
+            </button>
+          </mat-menu>
+
+        
+    </div>
+
+    <div>
+    <button mat-button (click)="accordion().openAll()">Expand All</button>
+    <button mat-button (click)="accordion().closeAll()">Collapse All</button>
+    </div>
+</mat-card>
+
+<div style="margin: 35px;">
+    <mat-accordion   multi>
+        @for(doorGroupId of doorGroupsIds; track doorGroupId ) 
+        {
+            <app-door-group  (doorGroupDeleted)="getDoorGroupsIds()"  [doorGroupId]="doorGroupId" [reloadTrigger]= "reloadTrigger"  ></app-door-group>
+        }
+      </mat-accordion>
+    </div>

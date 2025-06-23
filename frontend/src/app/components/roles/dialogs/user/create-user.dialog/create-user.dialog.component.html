@@ -1,0 +1,31 @@
+<h2 mat-dialog-title style="margin-bottom: 10px;">Create a User </h2>
+<mat-dialog-content>
+    <form [formGroup]="CreateUserForm" style="display: flex; flex-direction: column;"> 
+
+    
+            <mat-form-field style="width: 400px;">
+                <mat-label>User Name</mat-label>
+                <mat-icon matSuffix>badge</mat-icon>
+                <mat-hint align="end">{{input1.value.length}}/40</mat-hint>
+                <input type="text" matInput #input1 maxlength="40" formControlName="name" required>
+              </mat-form-field>
+    
+              <mat-form-field style="width: 400px;">
+                <mat-label>User Mail</mat-label>
+                <mat-icon matSuffix>mail</mat-icon>
+                <input  matInput formControlName="email" required>
+              </mat-form-field>
+       
+          <mat-checkbox 
+          formControlName="isadmin"
+        >
+          is Admin ?
+        </mat-checkbox>
+    
+    </form>    
+  
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-stroked-button (click)="OnCancel()">Cancel</button>
+  <button mat-flat-button (click)="onSubmit()" cdkFocusInitial>Submit</button>
+</mat-dialog-actions>

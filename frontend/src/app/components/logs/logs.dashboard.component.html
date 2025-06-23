@@ -1,0 +1,29 @@
+<mat-card class="action-buttons">
+
+  <div>
+      <button mat-button  (click)="refreshLogs()" >
+          <mat-icon style="color: grey;">refresh</mat-icon>
+          refresh
+      </button>
+      <button mat-button (click)="deleteAllLogs()"  >
+        <mat-icon style="color: grey;">clear_all</mat-icon>
+        clear all
+    </button>
+      
+  </div>
+
+
+</mat-card>
+
+ <div style="display: flex; align-items: center; justify-content: center; margin-top: 20px;">
+           <ag-grid-angular
+           [rowData]="Logs"
+           [columnDefs]="colDefs"
+           class="ag-theme-quartz"
+           [animateRows]="true"
+           [getRowId]="getRowId"
+           
+            style="height: 550px; width: 1200px; margin-top: 10px;"
+              >
+           </ag-grid-angular>
+</div>

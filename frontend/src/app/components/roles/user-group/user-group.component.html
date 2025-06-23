@@ -1,0 +1,47 @@
+<mat-expansion-panel  class="example-headers-align" style=" border-radius: 0%;">
+    <mat-expansion-panel-header>
+        <mat-panel-title>{{ UserGroup.name }}</mat-panel-title>
+        <mat-panel-description style="color: gray;">
+            
+
+            <div style=" display: flex; align-items: center; justify-content: center;">
+                {{ UserGroup.CreatedAt | date:'M/d/yy, h:mm a' | uppercase }}
+                <mat-icon style="margin-left: 3px;"  matTooltip="Date Created">info</mat-icon>
+            </div>
+      
+          <mat-icon>group</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <!--inside content = users inside the UserGroup-->
+      <div style="display: flex; justify-content: space-between;">
+        <div>
+          <button mat-button (click)="openAddUserToGroupDialog()">
+            <mat-icon style="color: grey;">add</mat-icon>
+            User
+        </button>
+        </div>
+        
+        <div>
+          <button mat-button (click)="openUpdateUserGroupDialog()" >
+            <mat-icon style="color: grey;">edit</mat-icon>
+            Group Name
+        </button>
+        <button mat-button (click)="openDeleteUserGroupDialog()" >
+            <mat-icon style="color: grey;">delete</mat-icon>
+            Group
+        </button>
+        </div>
+     
+      
+        </div>
+      <div style="display: flex; flex-direction: row; gap: 20px; align-items: center; margin-top: 15px;"> 
+        @for(userId of UserGroup.users; track userId)
+        {
+          <app-user (userRemovedFromGroup)="getUserGroupData(UserGroup.id)" [UserId]="userId" [userGroupID]="UserGroup.id" [events]="eventsSubject.asObservable()"  ></app-user>
+        }
+      </div>
+
+
+</mat-expansion-panel>

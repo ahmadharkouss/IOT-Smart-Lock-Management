@@ -1,0 +1,31 @@
+<h2 mat-dialog-title style="margin-bottom: 10px;">Add UserGroup to {{ data.doorGroupName}}</h2>
+<mat-dialog-content>
+    <form [formGroup]="MoveUserGrouptoDoorGroupForm"> 
+        
+        <mat-form-field style="width: 100%; margin-top: 15px;">
+            <mat-label>Choose a User Group</mat-label>
+            <mat-select formControlName="userGroup" required>
+              <mat-option *ngFor="let userGroup of userGroups" [value]="userGroup.id">
+                {{userGroup.name}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+
+          <mat-form-field style="width: 100%;">
+            <mat-label>Choose a Validity date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="validity" required>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+    
+    </form>    
+  
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-stroked-button (click)="OnCancel()">Cancel</button>
+  <button mat-flat-button (click)="onSubmit()" cdkFocusInitial>Submit</button>
+</mat-dialog-actions>
+
+

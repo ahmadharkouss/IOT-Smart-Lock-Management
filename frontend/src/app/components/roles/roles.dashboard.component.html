@@ -1,0 +1,41 @@
+
+
+<mat-card class="action-buttons">
+
+    <div>
+        <button mat-button  (click)="openCreateUserGroupDialog()" >
+            <mat-icon style="color: grey;">group_add</mat-icon>
+            Group
+        </button>
+        <button mat-button  [matMenuTriggerFor]="menu">
+            Users
+            <mat-icon style="color: grey;">manage_accounts</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openListUsersPopup()">
+              <span>Manage</span>
+              <mat-icon >manage_accounts</mat-icon>
+            </button>
+            <button mat-menu-item (click)="openCreateUserDialog()">
+              <span>Create</span>
+              <mat-icon>person_add</mat-icon>
+            </button>
+          </mat-menu>
+
+        
+    </div>
+
+    <div>
+    <button mat-button (click)="accordion().openAll()">Expand All</button>
+    <button mat-button (click)="accordion().closeAll()">Collapse All</button>
+    </div>
+</mat-card>
+
+<div style="margin: 35px;">
+    <mat-accordion   multi>
+        @for(userGroupId of userGroupsIds; track userGroupId) 
+        {
+            <app-user-group (userGroupDeleted)="getUserGroupsIds()"[UserGroupId]="userGroupId" [reloadTrigger]= "reloadTrigger"  ></app-user-group>
+        }
+      </mat-accordion>
+    </div>

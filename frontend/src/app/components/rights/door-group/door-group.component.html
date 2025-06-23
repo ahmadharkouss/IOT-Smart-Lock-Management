@@ -1,0 +1,63 @@
+<mat-expansion-panel  class="example-headers-align" style=" border-radius: 0%;">
+    <mat-expansion-panel-header>
+        <mat-panel-title>{{ DoorGroup.zone_name }}</mat-panel-title>
+        <mat-panel-description style="color: gray;">
+            
+
+            <div style=" display: flex; align-items: center; justify-content: center;">
+                {{ DoorGroup.createdAt| date:'M/d/yy, h:mm a' | uppercase }}
+                <mat-icon style="margin-left: 3px;"  matTooltip="Date Created">info</mat-icon>
+            </div>
+      
+          <mat-icon>meeting_room</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <!--inside content = users inside the UserGroup-->
+      <div style="display: flex; justify-content: space-between;">
+
+        <div>
+            <button mat-button (click)="openAddDoorToGroupDialog()">
+                <mat-icon style="color: grey;">add</mat-icon>
+                Door
+            </button>
+            <button mat-button  [matMenuTriggerFor]="menu" >
+                <mat-icon style="color: grey;">gavel</mat-icon>
+                User Groups
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="openUserGroupListOfDoorGroupDialog()">
+                  <mat-icon >list</mat-icon>
+                  <span>User Groups</span>
+                </button>
+                <button mat-menu-item (click)="openAddUserGroupToDoorGroupDialog()">
+                  <mat-icon>group_add</mat-icon>
+                  <span>User Groups</span>
+                </button>
+              </mat-menu>
+              
+              
+        </div>
+       
+        <div>
+            <button mat-button (click)="openUpdateDialog()">
+                <mat-icon style="color: grey;">edit</mat-icon>
+                Group Name
+            </button>
+            <button mat-button  (click)="openDeleteDialog()" >
+                <mat-icon style="color: grey;">delete</mat-icon>
+                Group
+            </button>
+        </div>
+     
+        </div>
+      <div style="display: flex; flex-direction: row; gap: 20px; align-items: center; margin-top: 15px;"> 
+        @for(doorId of DoorGroup.doors; track doorId)
+        {
+          <app-door (doorRemovedFromGroup)="getDoorGroupData()" [events]="eventsSubject.asObservable()" [DoorId]="doorId" [DoorGroupID]="DoorGroup.id" ></app-door>
+        }
+      </div>
+
+
+</mat-expansion-panel>

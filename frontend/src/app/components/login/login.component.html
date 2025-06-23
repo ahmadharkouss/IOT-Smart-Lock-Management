@@ -1,0 +1,36 @@
+<mat-card style="margin: 170px 500px; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+  <img style="margin-top: 2%; width: 250px; height: 80px;" src="assets/logo-red.png" alt="Angular Logo" />
+
+
+
+  <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()" style="margin-top: 40px; display: flex; flex-direction: column;" >
+ 
+    <mat-form-field style="width: 300px;">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+      
+    </mat-form-field>
+
+    <mat-form-field style="width: 300px; margin-top: 20px;">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password"/>
+      <button
+      type="button"
+        mat-icon-button
+        matSuffix
+        (click)="clickEvent($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button style="margin-bottom: 20px; margin-top: 20px;"  mat-flat-button>LogIn</button>
+</form>
+
+
+</mat-card>
+
+
+

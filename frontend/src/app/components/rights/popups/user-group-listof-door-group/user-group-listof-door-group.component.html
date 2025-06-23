@@ -1,0 +1,20 @@
+<mat-dialog-content >
+    <!-- The AG Grid component -->
+
+    <div style="display: flex; align-items: center; justify-content: center;">
+           <ag-grid-angular
+           [rowData]="UserGroups"
+           [columnDefs]="colDefs"
+           class="ag-theme-quartz"
+           [animateRows]="true"
+           [getRowId]="getRowId"
+            style="height: 530px; width: 720px; margin-top: 10px;"
+              >
+           </ag-grid-angular>
+       </div>
+
+
+
+  
+</mat-dialog-content>
+

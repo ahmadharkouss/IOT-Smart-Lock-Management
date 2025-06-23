@@ -1,0 +1,36 @@
+<mat-card style="border: solid 1.5px #930100; width: 280px; ">
+    <mat-card-header>
+        <mat-card-title style="display: flex; align-items: center; flex-direction: row;flex-wrap: wrap; word-break: break-word;">
+                {{ user.name }}
+                @if (user.is_admin)
+                {
+                    <mat-icon style="margin-left: 10px;">person</mat-icon>
+                    <mat-icon style="margin-left: 10px;">verified_user</mat-icon>
+                }
+                @else 
+                {
+                    <mat-icon style="margin-left: 10px;">person</mat-icon>
+                }
+  
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+            <p mat-line>
+            <span style="flex-wrap: wrap; word-break: break-word;">{{ user.email }}</span>
+            </p>
+            <div style=" margin-top: 15px;color: gray; display: flex; align-items: center; font-size: smaller;   ">
+                {{ user.CreatedAt | date:'M/d/yy, h:mm a' | uppercase }}
+               <mat-icon style=" font-size:medium; margin-left: 3px;"  matTooltip="Date Created">info</mat-icon>
+            </div>
+    </mat-card-content>
+    <mat-card-actions style="display: flex; justify-content: flex-end ">
+       
+        <div>
+            <button mat-button (click)="removeFromUserGroup()">
+                <mat-icon style="color: grey;"  >remove</mat-icon>
+                Remove
+            </button>
+        </div>
+        
+    </mat-card-actions>
+</mat-card>

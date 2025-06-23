@@ -1,0 +1,28 @@
+<mat-dialog-content >
+    <!-- The AG Grid component -->
+<div>
+   <button mat-icon-button (click)="closeDialog()">
+       <mat-icon>close</mat-icon>
+   </button>
+</div>
+
+    <div style="display: flex; align-items: center; justify-content: center;">
+           <ag-grid-angular
+           [rowData]="Doors"
+           [columnDefs]="colDefs"
+           class="ag-theme-quartz"
+           [overlayLoadingTemplate]="loadingTemplate"
+           [overlayNoRowsTemplate]="noRowsTemplate"
+           [animateRows]="true"
+           [getRowId]="getRowId"
+           (cellValueChanged)="onCellValueChanged($event)"
+           [autoSizeStrategy]="autoSizeStrategy"
+            style="height: 530px; width: 580px; margin-top: 10px;"
+              >
+           </ag-grid-angular>
+       </div>
+
+
+
+  
+</mat-dialog-content>

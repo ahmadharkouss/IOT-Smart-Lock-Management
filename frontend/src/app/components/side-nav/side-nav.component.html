@@ -1,0 +1,34 @@
+
+<mat-sidenav-container style="height: 100%; width: 100%;">
+
+
+    <mat-sidenav #sidenav mode="side" opened  class="custom-sidenav">
+        <mat-nav-list style="display: flex; flex-direction: column; margin-top: 10px;">
+            @for(menuItem of menulist; track menuItem.name)
+            {
+                  
+               <a mat-list-item [routerLink]="menuItem.route" [ngClass]=" menuItem.name === 'LogOut' ? 'logoutC' : 'defaultC'" >
+                        <div class="item">
+                            <mat-icon style="color: #930100; margin-right: 8px;">{{menuItem.icon}}</mat-icon>
+                            {{menuItem.name}}    
+                        </div>
+                        
+                </a>    
+
+            }   
+        </mat-nav-list>
+    </mat-sidenav>
+    
+    <mat-sidenav-content style="margin-top: 30px;">
+        <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon style="color:  #930100;">menu</mat-icon>
+        </button>
+        <span>Epi<span style="color:  #930100;">Safe</span></span>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+        <footer style="text-align: center; margin-top: 20px; color:  #930100;">
+            &copy; Harkous Ahmad 2025, <span style="color: grey;">Google M3</span>
+        </footer>
+    </mat-sidenav-content>
+</mat-sidenav-container>

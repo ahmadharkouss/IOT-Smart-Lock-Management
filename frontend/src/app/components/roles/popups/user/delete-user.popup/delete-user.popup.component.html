@@ -1,0 +1,10 @@
+<h2 mat-dialog-title style="margin-bottom: 10px;">Delete a User</h2>
+<mat-dialog-content>
+    <p>Are you sure you want to delete <span style="font-weight: bold;">{{data.userName}}</span>?</p>
+    <p style="text-align: center; margin-top: 15px; color: #930100;">This action cannot be undone!.</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-stroked-button (click)="OnCancel()">No</button>
+  <button mat-flat-button (click)="onSubmit()" cdkFocusInitial>Yes</button>
+</mat-dialog-actions>
+

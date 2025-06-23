@@ -1,0 +1,6 @@
+@Episafe_HostAddress = http://localhost:5187
+
+GET {{Episafe_HostAddress}}/
+Accept: application/json
+
+###

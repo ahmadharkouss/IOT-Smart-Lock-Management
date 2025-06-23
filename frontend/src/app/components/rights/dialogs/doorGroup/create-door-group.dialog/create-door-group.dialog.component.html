@@ -1,0 +1,19 @@
+<h2 mat-dialog-title style="margin-bottom: 10px;">Create a Door Group</h2>
+<mat-dialog-content>
+    <form [formGroup]="CreateDoorGroupForm"> 
+
+        <mat-form-field style="width: 300px;">
+            <mat-label>Group Name</mat-label>
+            <mat-icon matSuffix>groupe</mat-icon>
+            <mat-hint align="end">{{input1.value.length}}/10</mat-hint>
+            <input type="text" matInput #input1 maxlength="10" formControlName="name" required>
+          </mat-form-field>
+    
+    </form>    
+  
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-stroked-button (click)="OnCancel()">Cancel</button>
+  <button mat-flat-button (click)="onSubmit()" cdkFocusInitial>Submit</button>
+</mat-dialog-actions>
+
